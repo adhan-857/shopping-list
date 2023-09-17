@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+# Revisi tutorial 2
+
 from pathlib import Path
 import environ # Tambahkan kode berikut
 import os # Tambahkan kode berikut
