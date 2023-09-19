@@ -6,6 +6,8 @@ from django.urls import reverse
 from main.forms import ProductForm
 from .models import Product
 
+# Untuk deploy ulang
+
 # Create your views here.
 def show_main(request):
     products = Product.objects.all()
