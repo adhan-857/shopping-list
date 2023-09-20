@@ -12,8 +12,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Product 
 
-# Untuk deploy ulang
-
 # Create your views here.
 @login_required(login_url='/login')
 def show_main(request):
