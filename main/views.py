@@ -1,8 +1,7 @@
 import datetime
 from django.shortcuts import render
 from django.shortcuts import redirect
-from django.http import HttpResponseRedirect
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, HttpResponseNotFound, JsonResponse
 from django.core import serializers
 from django.urls import reverse
 from main.forms import ProductForm
@@ -11,7 +10,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
-from .models import Product 
+from .models import Product
+import json
 
 # Create your views here.
 @login_required(login_url='/login')
@@ -62,6 +62,7 @@ def delete_product(request, id):
     # Kembali ke halaman awal
     return HttpResponseRedirect(reverse('main:show_main'))
 
+@csrf_exempt
 def register(request):
     form = UserCreationForm()
 
@@ -74,6 +75,7 @@ def register(request):
     context = {'form':form}
     return render(request, 'register.html', context)
 
+@csrf_exempt
 def login_user(request):
     if request.method == 'POST':
         username = request.POST.get('username')
